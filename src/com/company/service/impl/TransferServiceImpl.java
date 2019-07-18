@@ -34,6 +34,12 @@ public class TransferServiceImpl implements TransferService {
             System.out.println("Minimum  amount to transfer is $1");
             return false;
         }
+
+        if (!(Integer.valueOf(transferAmount) % 10 == 0)) {
+            System.out.println("Invalid amount");
+            return false;
+        }
+
         if (balance - Integer.valueOf(transferAmount) < 0) {
             System.out.println("Insufficient balance $" + transferAmount);
             return false;
