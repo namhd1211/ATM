@@ -61,7 +61,7 @@ public class WithDrawServiceImpl implements WithDrawService {
                 String[] header = {"AccountNumber", "Balance", "CreatedDate", "WithDrawAmount"};
                 csvWriter.writeNext(header);
             }
-            String[] body = {withDraw.getAccountNumber(), withDraw.getBalance(), withDraw.getCreatedDate().toString(), withDraw.getWithDrawAmount()};
+            String[] body = {withDraw.getAccountNumber(), withDraw.getBalance(), withDraw.getCreatedDate(), withDraw.getWithDrawAmount()};
             csvWriter.writeNext(body);
             csvWriter.close();
         } catch (IOException e) {

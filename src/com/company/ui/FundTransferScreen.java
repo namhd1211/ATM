@@ -10,6 +10,7 @@ import com.company.service.impl.v2.AccountValidationServiceImpl;
 import com.company.utils.Utils;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 class FundTransferScreen {
@@ -86,7 +87,9 @@ class FundTransferScreen {
             switch (choice) {
                 case "1":
                     Account transferAccount = transferService.transfer(destination, account, transferAmount);
-                    Transfer transfer = new Transfer(account.getAccountNumber(), destination,String.valueOf(transferAmount), LocalDateTime.now());
+                    LocalDateTime now = LocalDateTime.now();
+                    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                    Transfer transfer = new Transfer(account.getAccountNumber(), destination,String.valueOf(transferAmount), now.format(dateTimeFormatter));
                     transferService.saveTransferTrans(transfer);
                     fund_transfer_summary(destination, transferAmount, referenceNumber, transferAccount);
                 case "":

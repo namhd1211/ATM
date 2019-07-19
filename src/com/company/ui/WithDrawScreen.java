@@ -10,6 +10,7 @@ import com.company.utils.Constant;
 import com.company.utils.Utils;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 class WithDrawScreen {
@@ -74,9 +75,11 @@ class WithDrawScreen {
     private void withDraw(Account account, int withDraw) {
         Account account1 = withDrawService.withDraw(account, withDraw);
         accountService.updateAccountBalance(account.getAccountNumber(), account.getBalance(), Constant.FILE_NAME);
-        withDrawService.saveWithDrawTrans(new WithDraw(account.getAccountNumber(), account.getBalance(), String.valueOf(withDraw), LocalDateTime.now()));
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        withDrawService.saveWithDrawTrans(new WithDraw(account.getAccountNumber(), account.getBalance(), String.valueOf(withDraw), now.format(dateTimeFormatter)));
         SummaryScreen summaryScreen = new SummaryScreen();
-        summaryScreen.summary_menu(account1, LocalDateTime.now().toString(), "$" + withDraw);
+        summaryScreen.summary_menu(account1, now.format(dateTimeFormatter), "$" + withDraw);
     }
 
     private boolean isValidWithDraw(Account account, String withDraw) {

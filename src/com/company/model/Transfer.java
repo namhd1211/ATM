@@ -6,12 +6,12 @@ public class Transfer {
     private String srcAccNumber;
     private String desAccNumber;
     private String balance;
-    private LocalDateTime createdDate;
+    private String createdDate;
 
     public Transfer() {
     }
 
-    public Transfer(String srcAccNumber, String desAccNumber, String balance, LocalDateTime createdDate) {
+    public Transfer(String srcAccNumber, String desAccNumber, String balance, String createdDate) {
         this.srcAccNumber = srcAccNumber;
         this.desAccNumber = desAccNumber;
         this.balance = balance;
@@ -42,11 +42,11 @@ public class Transfer {
         this.balance = balance;
     }
 
-    public LocalDateTime getCreatedDate() {
+    public String getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(LocalDateTime createdDate) {
+    public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
 }

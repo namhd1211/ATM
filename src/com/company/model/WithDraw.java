@@ -1,14 +1,12 @@
 package com.company.model;
 
-import java.time.LocalDateTime;
-
 public class WithDraw {
     private String accountNumber;
     private String balance;
     private String withDrawAmount;
-    private LocalDateTime createdDate;
+    private String createdDate;
 
-    public WithDraw(String accountNumber, String balance, String withDrawAmount, LocalDateTime createdDate) {
+    public WithDraw(String accountNumber, String balance, String withDrawAmount, String createdDate) {
         this.accountNumber = accountNumber;
         this.balance = balance;
         this.withDrawAmount = withDrawAmount;
@@ -42,11 +40,11 @@ public class WithDraw {
         this.balance = balance;
     }
 
-    public LocalDateTime getCreatedDate() {
+    public String getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(LocalDateTime createdDate) {
+    public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
 }
