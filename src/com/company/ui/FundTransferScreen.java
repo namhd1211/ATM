@@ -91,7 +91,8 @@ class FundTransferScreen {
                     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
                     Transfer transfer = new Transfer(account.getAccountNumber(), destination,String.valueOf(transferAmount), now.format(dateTimeFormatter));
                     transferService.saveTransferTrans(transfer);
-                    fund_transfer_summary(destination, transferAmount, referenceNumber, transferAccount);
+                    SummaryScreen summaryScreen = new SummaryScreen();
+                    summaryScreen.fund_transfer_summary(destination, transferAmount, referenceNumber, transferAccount);
                 case "":
                     fund_transfer_account(account);
                 case "2":
@@ -101,27 +102,5 @@ class FundTransferScreen {
         } while (!choice.equals("2"));
     }
 
-    private void fund_transfer_summary(String destination, int transferAmount, String referenceNumber, Account account) {
-        int choice;
-        do {
-            System.out.println("----------------------------------------");
-            System.out.println("Fund Transfer Summary");
-            System.out.println("Destination model.Account : " + destination);
-            System.out.println("Transfer Amount : $" + transferAmount);
-            System.out.println("Reference Number : " + referenceNumber);
-            System.out.println("Balance : " + account.getBalance());
-            System.out.println("1. Transaction");
-            System.out.println("2. Exit");
-            System.out.print("Choose option[2]: ");
-            Scanner scanner = new Scanner(System.in);
-            choice = scanner.nextInt();
-            switch (choice) {
-                case 1:
-                    TransactionScreen transactionScreen = new TransactionScreen();
-                    transactionScreen.transaction_menu(account);
-                case 2:
-                    System.exit(0);
-            }
-        } while (true);
-    }
+
 }

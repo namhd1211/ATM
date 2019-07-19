@@ -2,7 +2,6 @@ package com.company.service.impl.v2;
 
 import com.company.model.Account;
 import com.company.model.Transaction;
-import com.company.model.Transfer;
 import com.company.utils.Constant;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
