@@ -5,6 +5,7 @@ import com.company.model.Transaction;
 import com.company.service.impl.v2.AccountServiceImplV2;
 import com.company.service.impl.v2.AccountServiceV2;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -45,6 +46,8 @@ class TransactionScreen {
 
     private void transactionHistoryScreen(String accountNumber) {
         List<Transaction> transactions = accountServiceV2.getTransactions(accountNumber);
-        transactions.forEach(System.out::println);
+        if (transactions.size() == 0) {
+            transactions.forEach(System.out::println);
+        }
     }
 }
